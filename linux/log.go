@@ -1,7 +1,14 @@
 package linux
 
 import (
-	"github.com/mgutz/logxi/v1"
+	"log"
+	"strings"
 )
 
-var logger = log.New("linux")
+var logger = stubLogger{}
+
+type stubLogger struct{}
+
+func (s stubLogger) Info(strs ...string) {
+	log.Println(strings.Join(strs, " : "))
+}
