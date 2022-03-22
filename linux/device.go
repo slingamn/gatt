@@ -46,6 +46,7 @@ func newDevice(n int, chk bool) (*device, error) {
 			log.Printf("error while opening device %d: %v", i, err)
 		}
 	}
+	syscall.Close(fd)
 	return nil, errors.New("no supported devices available")
 }
 
